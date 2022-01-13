@@ -11,12 +11,13 @@ import (
 
 const (
 	defaultDropitPath = "./.dropit"
-	dropitPathEnv     = "DROPITPATH"
+	dropitPathEnv     = "DROPIT_PATH"
 )
 
 func dropitPath() string {
 	path := os.Getenv(dropitPathEnv)
 	if strings.TrimSpace(path) == "" {
+		fmt.Printf("%q environment variable is not set. Using default location %q\n.", dropitPathEnv, defaultDropitPath)
 		return defaultDropitPath
 	}
 	return path
